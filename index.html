@@ -101,7 +101,6 @@
                             <span class="author-block"><sup>3</sup>ShanghaiTech University</span>
                         </div>
 
-<!--                        <div class="is-size-5 publication-authors">-->
                         <div class="column has-text-centered">
                             <div class="publication-links">
                           <span class="link-block">
@@ -142,7 +141,26 @@
                                         type="video/mp4">
                             </video>
                             <h2 class="subtitle has-text-centered">
-                                We present Paint3D, a novel coarse-to-fine generative framework that is capable of producing
+                                Paint3D is capable of producing high-resolution, lighting-less, and diverse 2K UV texture maps for untextured 3D meshes conditioned on text or image inputs.
+                            </h2>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <!-- Abstract. -->
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <h2 class="title is-3">Abstract</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                            We present Paint3D, a novel coarse-to-fine generative framework that is capable of producing
                             high-resolution, lighting-less, and diverse 2K UV texture maps for untextured 3D meshes
                             conditioned on text or image inputs. The key challenge addressed is generating high-quality
                             textures without embedded illumination information, which allows the textures to be
@@ -154,54 +172,25 @@
                             UV Inpainting and UVHD diffusion models specialized for the shape-aware refinement of
                             incomplete areas and the removal of illumination artifacts. Through this coarse-to-fine
                             process, Paint3D can produce high-quality 2K UV textures that maintain semantic consistency
-                            while being lighting-less, significantly advancing the state-of-the-art in texturing 3D
-                            objects.
-                            </h2>
-                        </div>
-
+                            while being lighting-less, significantly advancing the state-of-the-art in texturing 3D objects.
+                        </p>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section">
-        <div class="container is-max-desktop">
-
-            <!-- Overview. -->
-            <div class="columns is-centered has-text-centered">
-                <div class="column is-full-width">
-                    <h2 class="title is-3">Method Overview</h2>
                     <img src="./static/imgs/overview.jpg"/>
-                    <div class="content has-text-justified">
-                        <p>
-                            The overview of our coarse-to-fine framework. The coarse stage samples multi-view images
-                            from the pre-trained 2D image diffusion models, then back-projects these images onto the
-                            mesh surface to create initial texture maps. The refinement stage generates high-quality
-                            textures with a diffusion model in UV space, conditioned on the position map and the coarse
-                            texture map.
-                        </p>
-                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+            <!--/ Abstract. -->
 
-
-    <section class="section">
-        <div class="container is-max-desktop">
-            <!-- Animation. -->
-            <div class="columns is-centered">
-                <div class="column is-full-width">
-                    <h2 class="title is-3">Texture Generation</h2>
-
-                    <!-- Re-rendering. -->
-<!--                    <h3 class="title is-4">Re-rendering the input video</h3>-->
-                    <div class="content has-text-justified">
-                        <p>
-                            Paint3D is capable of producing high-resolution, lighting-less, and diverse UV texture maps for untextured 3D meshes conditioned on text or image inputs.
-                        </p>
-                    </div>
+            <!-- Paper video. -->
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <h2 class="title is-3">Video</h2>
+<!--                    <div class="publication-video">-->
+<!--                        <iframe width="560" height="315"-->
+<!--                                src="https://www.youtube.com/embed/T4GUOLvO1n0?si=l-PLk4OMIPaFpwXF"-->
+<!--                                title="YouTube video player" frameborder="0"-->
+<!--                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"-->
+<!--                                allowfullscreen></iframe>-->
+<!--                    </div>-->
                     <div class="content has-text-centered">
                         <video id="replay-video1"
                                autoplay
@@ -211,45 +200,39 @@
                                preload
                                playsinline
                                width="100%">
-                            <source src="./static/videos/video_demo_1_c.mp4"
+                            <source src="./static/videos/video_demo_full_c.mp4"
                                     type="video/mp4">
                         </video>
                     </div>
-
-                    <div class="content has-text-centered">
-                        <video id="replay-video2"
-                               autoplay
-                               loop
-                               controls
-                               muted
-                               preload
-                               playsinline
-                               width="100%">
-                            <source src="./static/videos/video_demo_2_c.mp4"
-                                    type="video/mp4">
-                        </video>
-                    </div>
-
-                    <div class="content has-text-centered">
-                        <video id="replay-video3"
-                               autoplay
-                               loop
-                               controls
-                               muted
-                               preload
-                               playsinline
-                               width="100%">
-                            <source src="./static/videos/video_demo_3_c.mp4"
-                                    type="video/mp4">
-                        </video>
-                    </div>
-                    <!--/ Re-rendering. -->
-
                 </div>
             </div>
-            <!--/ Animation. -->
+            <!--/ Paper video. -->
         </div>
     </section>
+
+
+<!--    <section class="section">-->
+<!--        <div class="container is-max-desktop">-->
+
+<!--            &lt;!&ndash; Overview. &ndash;&gt;-->
+<!--            <div class="columns is-centered has-text-centered">-->
+<!--                <div class="column is-full-width">-->
+<!--                    <h2 class="title is-3">Method Overview</h2>-->
+<!--                    <img src="./static/imgs/overview.jpg"/>-->
+<!--                    <div class="content has-text-justified">-->
+<!--                        <p>-->
+<!--                            The overview of our coarse-to-fine framework. The coarse stage samples multi-view images-->
+<!--                            from the pre-trained 2D image diffusion models, then back-projects these images onto the-->
+<!--                            mesh surface to create initial texture maps. The refinement stage generates high-quality-->
+<!--                            textures with a diffusion model in UV space, conditioned on the position map and the coarse-->
+<!--                            texture map.-->
+<!--                        </p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </section>-->
+
 
     <section class="section" id="BibTeX">
         <div class="container is-max-desktop content">
