@@ -1,8 +1,12 @@
-# https://github.com/mikedh/trimesh
+# Blender 3.4.1 MTL File: 'None'
+# www.blender.org
 
-newmtl material_0
-Ka 0.40000000 0.40000000 0.40000000
-Kd 0.40000000 0.40000000 0.40000000
-Ks 0.40000000 0.40000000 0.40000000
-Ns 1.00000000
+newmtl mat0.004
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
 map_Kd mesh_normalized.png

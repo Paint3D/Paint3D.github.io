@@ -239,6 +239,20 @@
             <div class="container">
                 <h2 class="title is-3">Conditional Generation</h2>
                 <h2 class="title is-4">Text Conditional Generation</h2>
+                <div id="results-carousel" class="carousel results-carousel">
+                    <div>
+                        <div style="text-align: center; font-size: large;">Latent-Paint</div>
+                    </div>
+                    <div>
+                        <div style="text-align: center; font-size: large;">TEXTure</div>
+                    </div>
+                    <div>
+                        <div style="text-align: center; font-size: large;">Text2Tex</div>
+                    </div>
+                    <div>
+                        <div style="text-align: center; font-size: large;">Ours</div>
+                    </div>
+                </div>
 
                 <div id="results-carousel" class="carousel results-carousel">
                     <div class="item item-steve render_wrapper">
@@ -254,55 +268,73 @@
                         <div id="textCond2_col4" class="render_div"></div>
                     </div>
                 </div>
+                <div style="text-align: center;">
+                    <h6 class="caption">"a armadillo, high quality"</h6>
+                </div>
+                <div id="results-carousel" class="carousel results-carousel">
+                    <div class="item item-steve render_wrapper">
+                        <div id="textCond3_col1" class="render_div"></div>
+                    </div>
+                    <div class="item item-steve render_wrapper">
+                        <div id="textCond3_col2" class="render_div"></div>
+                    </div>
+                    <div class="item item-steve render_wrapper">
+                        <div id="textCond3_col3" class="render_div"></div>
+                    </div>
+                    <div class="item item-steve render_wrapper">
+                        <div id="textCond3_col4" class="render_div"></div>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <h6 class="caption">"blue and white porcelain, teapot, high quality"</h6>
+                </div>
 
-<!--                <div id="results-carousel" class="carousel results-carousel">-->
-<!--                    <div class="item item-steve render_wrapper">-->
-<!--                        <div id="textCond3_col1" class="render_div"></div>-->
-<!--                    </div>-->
-<!--                    <div class="item item-steve render_wrapper">-->
-<!--                        <div id="textCond3_col2" class="render_div"></div>-->
-<!--                    </div>-->
-<!--                    <div class="item item-steve render_wrapper">-->
-<!--                        <div id="textCond3_col3" class="render_div"></div>-->
-<!--                    </div>-->
-<!--                    <div class="item item-steve render_wrapper">-->
-<!--                        <div id="textCond3_col4" class="render_div"></div>-->
-<!--                    </div>-->
-<!--                </div>-->
+                <div style="text-align: center; font-size: large; height: 50px;"></div>
+                <h2 class="title is-4">Image Conditional Generation</h2>
+                <div id="results-carousel" class="carousel results-carousel">
+                    <div>
+                        <div style="text-align: center; font-size: large;">Conditional Image</div>
+                    </div>
+                    <div>
+                        <div style="text-align: center; font-size: large;">Geometry</div>
+                    </div>
+                    <div>
+                        <div style="text-align: center; font-size: large;">TEXTure</div>
+                    </div>
+                    <div>
+                        <div style="text-align: center; font-size: large;">Ours</div>
+                    </div>
+                </div>
 
+                <div id="results-carousel" class="carousel results-carousel">
+                    <div class="item item-steve">
+                        <img src="./static/imgs/image_prompt_fighter.png" width="100%"/>
+                    </div>
+                    <div class="item item-steve render_wrapper">
+                        <div id="imgCond1_col2" class="render_div"></div>
+                    </div>
+                    <div class="item item-steve render_wrapper">
+                        <div id="imgCond1_col3" class="render_div"></div>
+                    </div>
+                    <div class="item item-steve render_wrapper">
+                        <div id="imgCond1_col4" class="render_div"></div>
+                    </div>
+                </div>
 
-<!--                <div style="text-align: center; font-size: large; height: 50px;"></div>-->
-<!--                <h2 class="title is-4">Image Conditional Generation</h2>-->
-
-<!--                <div id="results-carousel" class="carousel results-carousel">-->
-<!--                    <div class="item item-steve render_wrapper">-->
-<!--                        <div id="imgCond1_col2" class="render_div"></div>-->
-<!--                    </div>-->
-<!--                    <div class="item item-steve render_wrapper">-->
-<!--                        <div id="imgCond1_col2" class="render_div"></div>-->
-<!--                    </div>-->
-<!--                    <div class="item item-steve render_wrapper">-->
-<!--                        <div id="imgCond1_col3" class="render_div"></div>-->
-<!--                    </div>-->
-<!--                    <div class="item item-steve render_wrapper">-->
-<!--                        <div id="imgCond1_col4" class="render_div"></div>-->
-<!--                    </div>-->
-<!--                </div>-->
-
-<!--                <div id="results-carousel" class="carousel results-carousel">-->
-<!--                    <div class="item item-steve render_wrapper">-->
-<!--                        <div id="imgCond1_col2" class="render_div"></div>-->
-<!--                    </div>-->
-<!--                    <div class="item item-steve render_wrapper">-->
-<!--                        <div id="imgCond2_col2" class="render_div"></div>-->
-<!--                    </div>-->
-<!--                    <div class="item item-steve render_wrapper">-->
-<!--                        <div id="imgCond2_col3" class="render_div"></div>-->
-<!--                    </div>-->
-<!--                    <div class="item item-steve render_wrapper">-->
-<!--                        <div id="imgCond2_col4" class="render_div"></div>-->
-<!--                    </div>-->
-<!--                </div>-->
+                <div id="results-carousel" class="carousel results-carousel">
+                    <div class="item item-steve">
+                        <img src="./static/imgs/image_prompt_chair.jpg" width="100%"/>
+                    </div>
+                    <div class="item item-steve render_wrapper">
+                        <div id="imgCond2_col2" class="render_div"></div>
+                    </div>
+                    <div class="item item-steve render_wrapper">
+                        <div id="imgCond2_col3" class="render_div"></div>
+                    </div>
+                    <div class="item item-steve render_wrapper">
+                        <div id="imgCond2_col4" class="render_div"></div>
+                    </div>
+                </div>
 
             </div>
     </section>
@@ -529,8 +561,7 @@
             let slider = document.getElementsByClassName("slider")[0]
             slider.removeAttribute("tabIndex")
 
-            // const qualitative = ["textCond2", "textCond3", "imgCond1", "imgCond2"];
-            const qualitative = ["textCond2"];
+            const qualitative = ["textCond2", "textCond3", "imgCond1", "imgCond2"];
 
             qualitative.forEach(element => {
                 if (element.includes("textCond")){
