@@ -2,23 +2,20 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <meta name="description"
-        content="Texture Generation on 3D Meshes with Point-UV Diffusion">
-  <meta name="keywords" content="3D generation, textures, diffusion">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Point-UV Diffusion</title>
+    <meta name="description" content="Paint3D: Paint Anything 3D with Lighting-Less Texture Diffusion Models">
+    <meta name="keywords" content="Paint3D, diffusion, 3D textures, 3D contents, generation">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Paint3D</title>
 
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
-        rel="stylesheet">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
 
-  <link rel="stylesheet" href="./static/css/bulma.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
-  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
-  <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  <link rel="stylesheet" href="./static/css/index.css">
-  <link rel="icon" href="./static/images/favicon.svg">
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
 
 
   <style>
@@ -26,43 +23,48 @@
         position: relative;
         height: 350px;
     }
-    .external-link {
-    color: #ffffff !important; 
-    background-color: rgb(104, 161, 135) !important;
-    border-radius: 10px !important;
-    font-size: 12px !important;
-    }
+    .render_div {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    /*.external-link {*/
+    /*color: #ffffff !important; */
+    /*background-color: rgb(104, 161, 135) !important;*/
+    /*border-radius: 10px !important;*/
+    /*font-size: 12px !important;*/
+    /*}*/
 
-    .external-link .icon {
-    font-size: 20px !important;
-    }
+    /*.external-link .icon {*/
+    /*font-size: 20px !important;*/
+    /*}*/
 
-    .external-link:hover {
-    background-color: #555555 !important;
-    }
+    /*.external-link:hover {*/
+    /*background-color: #555555 !important;*/
+    /*}*/
 
-    .conference {
-    font-family: 'Google Sans', sans-serif;
-    color: hsl(240, 2%, 10%) !important;
-    font-family: 'Merriweather', serif;
-    font-weight: 500;
-    }
+    /*.conference {*/
+    /*font-family: 'Google Sans', sans-serif;*/
+    /*color: hsl(240, 2%, 10%) !important;*/
+    /*font-family: 'Merriweather', serif;*/
+    /*font-weight: 500;*/
+    /*}*/
 
     .results-carousel textbox {
-    font-size: 7px; 
+    font-size: 7px;
     font-family: 'Google Sans', cursive, sans-serif;
     color: hsl(321, 56%, 56%) !important;
     }
     .dialog-box {
-        background-color: rgba(255, 255, 255, 0.5); 
+        background-color: rgba(255, 255, 255, 0.5);
         border: 1px solid rgba(96, 85, 85, 0.494);
-        padding: 10px; 
-        border-radius: 15px; 
-        z-index: 1000; 
-        font-size: 14px; 
-        font-family: 'Comic Sans MS', cursive, sans-serif; 
+        padding: 10px;
+        border-radius: 15px;
+        z-index: 1000;
+        font-size: 14px;
+        font-family: 'Comic Sans MS', cursive, sans-serif;
         color: hsl(322, 33%, 22%) !important;
-        font-weight: bold; 
+        font-weight: bold;
     }
   </style>
 
@@ -75,95 +77,112 @@
   <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/index.js"></script>
 
+  <!-- scripts and css for MVDream -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./static/css/styles.css">
+  <script src="./static/js/video_comparison.js"></script>
+
 </head>
 <body>
+
 
 <section class="hero">
     <div class="hero-body">
         <div class="container is-max-desktop">
             <div class="columns is-centered">
                 <div class="column has-text-centered">
-                    <h1 class="title is-1 publication-title">Texture Generation on 3D Meshes with Point-UV Diffusion</h1>
+                    <h1 class="title is-1 publication-title">Paint3D: Paint Anything 3D with Lighting-less Texture
+                        Diffusion Models</h1>
+
                     <div class="is-size-5 publication-authors">
+                            <span class="author-block">
+                            <a href="https://scholar.google.com/citations?user=tgDc0fsAAAAJ">Xianfang Zeng</a><sup>1*</sup>,
+                            </span>
                         <span class="author-block">
-                            <a href="https://scholar.google.com/citations?user=JX8kSoEAAAAJ&hl=zh-CN" target="_Blank">Xin Yu</a>,</span>
+                            <a href="https://chenxin.tech/">Xin Chen</a><sup>1*</sup>,
+                            </span>
                         <span class="author-block">
-                            <a href="https://daipengwa.github.io/" target="_Blank">Peng Dai</a>,</span>
+                            <a href="https://qzq2514.github.io/">Zhongqi Qi</a><sup>1*</sup>,
+                            </span>
                         <span class="author-block">
-                            <a href="https://fenglinglwb.github.io/" target="_Blank">Wenbo Li</a>,
-                        </span>
+                            <a href="https://scholar.google.com/citations?user=A6K6bkoAAAAJ">Wen Liu</a><sup>1</sup>,
+                            </span>
                         <span class="author-block">
-                            Lan Ma,
-                        </span>
+                            <a href="https://github.com/Maikouuu">Zibo Zhao</a><sup>1,3</sup>,
+                            </span>
                         <span class="author-block">
-                            <a href="https://liuzhengzhe.github.io/" target="_Blank">Zhengzhe Liu</a>,
-                        </span>
+                            <a href="https://github.com/OpenTexture/Paint3D">Zhibin Wang</a><sup>1</sup>,
+                            </span>
                         <span class="author-block">
-                            <a href="https://xjqi.github.io/" target="_Blank">Xiaojuan Qi</a>,
-                        </span>
+                            <a href="https://github.com/OpenTexture/Paint3D">BIN FU</a><sup>1</sup>,
+                            </span>
+                        <span class="author-block">
+                            <a href="https://april.zju.edu.cn/team/dr-yong-liu/">Yong Liu</a><sup>2</sup>,
+                            </span>
+                        <span class="author-block">
+                            <a href="https://www.skicyyu.org">Gang Yu</a><sup>1+</sup>
+                            </span>
                     </div>
 
-                    <!-- <div class="is-size-5 publication-authors">
-                        <span class="author-block"><sup>1</sup>The University of Hong Kong,</span>
-                        <span class="author-block"><sup>2</sup>The Chinese University of Hong Kong,</span>
-                        <span class="author-block"><sup>3</sup>TCL Corporate Research</span>
-                    </div> -->
-                    <div class="is-size-5 conference">
-                        <span class="author-block">ICCV 2023</span>
+                    <div class="is-size-5 publication-authors">
+                        <span class="author-block"><sup>1</sup>Tencent PCG,</span>
+                        <span class="author-block"><sup>2</sup>Zhejiang University,</span>
+                        <span class="author-block"><sup>3</sup>ShanghaiTech University</span>
                     </div>
 
                     <div class="column has-text-centered">
                         <div class="publication-links">
-                            <!-- PDF Link. -->
+                          <span class="link-block">
+                            <a href="https://arxiv.org/abs/2312.13913"
+                               class="external-link button is-normal is-rounded is-dark">
+                              <span class="icon">
+                                  <i class="ai ai-arxiv"></i>
+                              </span>
+                              <span>arXiv</span>
+                            </a>
+                          </span>
+                            <!-- Code Link. -->
                             <span class="link-block">
-                                <a href="./paper/point_uv_diffusion.pdf"
-                                    class="external-link button is-normal is-rounded is-dark">
-                                    <span class="icon">
-                                        <i class="fas fa-file-pdf"></i>
-                                    </span>
-                                    <span>Paper</span>
-                                </a>
-                            </span>
+                            <a href="https://github.com/OpenTexture/Paint3D"
+                               class="external-link button is-normal is-rounded is-dark">
+                              <span class="icon">
+                                  <i class="fab fa-github"></i>
+                              </span>
+                              <span>Code</span>
+                              </a>
+                          </span>
+                            <!-- Video Link. -->
                             <span class="link-block">
-                                <a class="external-link button is-normal is-rounded is-dark" href="#">
-                                    <span class="icon">
-                                        <i class="ai ai-arxiv"></i>
-                                    </span>
-                                    <span>arXiv</span>
-                                </a>
-                            </span>
-
-                            <!-- Github Link. -->
-                            <span class="link-block">
-                                <a href="https://github.com/CVMI-Lab/Point-UV-Diffusion" class="external-link button is-normal is-rounded is-dark">
-                                    <span class="icon">
-                                        <i class="fab fa-github"></i>
-                                    </span>
-                                    <span>Code</span>
-                                </a>
-                            </span>
-                            <!-- Dataset Link. -->
-                            <span class="link-block"></span>
+                            <a href="https://youtu.be/T4GUOLvO1n0?si=X4dWHmPl9Go6PI-6"
+                               class="external-link button is-normal is-rounded is-dark">
+                              <span class="icon">
+                                  <i class="fab fa-youtube"></i>
+                              </span>
+                              <span>Video</span>
+                            </a>
+                          </span>
                         </div>
                     </div>
+
+                    <div class="is-size-5 publication-authors">
+                        <video id="teaser" autoplay muted loop playsinline height="100%">
+                            <source src="./static/videos/teaser2.mp4"
+                                    type="video/mp4">
+                        </video>
+                        <h2 class="subtitle has-text-centered">
+                            Paint3D is capable of producing high-resolution, lighting-less, and diverse 2K UV texture
+                            maps for untextured 3D meshes conditioned on text or image inputs.
+                        </h2>
+                    </div>
+
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="hero teaser">
-    <div class="container is-max-desktop">
-        <div class="hero-body">
-            <img src="./figs/teaser.png" height="150%" />
-            <!-- <h2 class=" subtitle has-text-centered" style="padding-top: 10px">
-                A gallery of generated results by our Point-UV Diffusion. Our method is capable of processing meshes of any genus, generating diversified, geometry-compatible, and high-fidelity textures. 
-            </h2> -->
-        </div>
-    </div>
-</section>
 
-<section class="section hero is-light">
+<section class="section">
     <div class="container is-max-desktop">
         <!-- Abstract. -->
         <div class="columns is-centered has-text-centered">
@@ -171,21 +190,53 @@
                 <h2 class="title is-3">Abstract</h2>
                 <div class="content has-text-justified">
                     <p>
-                        In this work, we focus on synthesizing high-quality textures on
-                        3D meshes. 
-                        We present Point-UV diffusion, a coarse-to-fine pipeline that marries the denoising diffusion model with UV mapping to generate 3D consistent and high-quality texture images in UV space. 
-                        We start with introducing a point diffusion model to synthesize low-frequency texture components with our tailored style guidance to tackle the biased color distribution.
-                        The derived coarse texture offers global consistency and 
-                        serves as a condition for the subsequent UV diffusion stage, aiding in regularizing the model to generate a 3D consistent UV texture image.
-                        Then, a UV diffusion model with hybrid conditions is developed 
-                        to enhance the texture fidelity in the 2D UV space. Our method can process meshes of any genus, generating
-                        diversified, geometry-compatible, and high-fidelity textures. 
-                        
+                        We present Paint3D, a novel coarse-to-fine generative framework that is capable of producing
+                        high-resolution, lighting-less, and diverse 2K UV texture maps for untextured 3D meshes
+                        conditioned on text or image inputs. The key challenge addressed is generating high-quality
+                        textures without embedded illumination information, which allows the textures to be
+                        re-lighted or re-edited within modern graphics pipelines. To achieve this, our method first
+                        leverages a pre-trained depth-aware 2D diffusion model to generate view-conditional images
+                        and perform multi-view texture fusion, producing an initial coarse texture map. However, as
+                        2D models cannot fully represent 3D shapes and disable lighting effects, the coarse texture
+                        map exhibits incomplete areas and illumination artifacts. To resolve this, we train separate
+                        UV Inpainting and UVHD diffusion models specialized for the shape-aware refinement of
+                        incomplete areas and the removal of illumination artifacts. Through this coarse-to-fine
+                        process, Paint3D can produce high-quality 2K UV textures that maintain semantic consistency
+                        while being lighting-less, significantly advancing the state-of-the-art in texturing 3D objects.
                     </p>
-                    
+                </div>
+                <img src="./static/imgs/overview.jpg"/>
+            </div>
+        </div>
+        <!--/ Abstract. -->
+
+        <!-- Paper video. -->
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+                <h2 class="title is-3">Video</h2>
+                <!--                    <div class="publication-video">-->
+                <!--                        <iframe width="560" height="315"-->
+                <!--                                src="https://www.youtube.com/embed/T4GUOLvO1n0?si=l-PLk4OMIPaFpwXF"-->
+                <!--                                title="YouTube video player" frameborder="0"-->
+                <!--                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"-->
+                <!--                                allowfullscreen></iframe>-->
+                <!--                    </div>-->
+                <div class="content has-text-centered">
+                    <video id="replay-video1"
+                           autoplay
+                           loop
+                           controls
+                           muted
+                           preload
+                           playsinline
+                           width="100%">
+                        <source src="./static/videos/video_demo_full_c.mp4"
+                                type="video/mp4">
+                    </video>
                 </div>
             </div>
         </div>
+        <!--/ Paper video. -->
     </div>
 </section>
 
