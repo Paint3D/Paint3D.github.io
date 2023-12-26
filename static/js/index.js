@@ -1,39 +1,24 @@
 window.HELP_IMPROVE_VIDEOJS = false;
-window.HELP_IMPROVE_VIDEOJS = false;
 
-let INTERP_BASE = "./static/latent_interpolation/";
-let NUM_INTERP_FRAMES = 26;
+var INTERP_BASE = "./static/interpolation/stacked";
+var NUM_INTERP_FRAMES = 240;
 
-let interp_images_chair = [];
-let interp_images_car = [];
+var interp_images = [];
 function preloadInterpolationImages() {
-    for (let i = 0; i < NUM_INTERP_FRAMES; i++) {
-        let path = INTERP_BASE + 'car/' + String(i).padStart(3, '0') + '.jpg';
-        interp_images_car[i] = new Image();
-        interp_images_car[i].src = path;
-        // interp_images_car[i].width = 256;
-    }
-    for (let i = 0; i < NUM_INTERP_FRAMES; i++) {
-        let path = INTERP_BASE + 'chair/' + String(i).padStart(3, '0') + '.jpg';
-        interp_images_chair[i] = new Image();
-        interp_images_chair[i].src = path;
-        // interp_images_chair[i].width = 256;
-    }
+  for (var i = 0; i < NUM_INTERP_FRAMES; i++) {
+    var path = INTERP_BASE + '/' + String(i).padStart(6, '0') + '.jpg';
+    interp_images[i] = new Image();
+    interp_images[i].src = path;
+  }
 }
 
-function setInterpolationImageChair(i) {
-  let image_chair = interp_images_chair[i];
-  image_chair.ondragstart = function() { return false; };
-  image_chair.oncontextmenu = function() { return false; };
-  $('#interpolation-image-wrapper-chair').empty().append(image_chair);
+function setInterpolationImage(i) {
+  var image = interp_images[i];
+  image.ondragstart = function() { return false; };
+  image.oncontextmenu = function() { return false; };
+  $('#interpolation-image-wrapper').empty().append(image);
 }
 
-function setInterpolationImageCar(i) {
-  let image_car = interp_images_car[i];
-  image_car.ondragstart = function() { return false; };
-  image_car.oncontextmenu = function() { return false; };
-  $('#interpolation-image-wrapper-car').empty().append(image_car);
-}
 
 $(document).ready(function() {
     // Check for click events on the navbar burger icon
@@ -44,21 +29,20 @@ $(document).ready(function() {
 
     });
 
-    let options = {
+    var options = {
 			slidesToScroll: 1,
-			slidesToShow: 4,
-			loop: false,
-			infinite: false,
-            pagination: false,
+			slidesToShow: 3,
+			loop: true,
+			infinite: true,
 			autoplay: false,
 			autoplaySpeed: 3000,
     }
 
 		// Initialize all div with carousel class
-    let carousels = bulmaCarousel.attach('.carousel', options);
+    var carousels = bulmaCarousel.attach('.carousel', options);
 
     // Loop on each carousel initialized
-    for(let i = 0; i < carousels.length; i++) {
+    for(var i = 0; i < carousels.length; i++) {
     	// Add listener to  event
     	carousels[i].on('before:show', state => {
     		console.log(state);
@@ -66,7 +50,7 @@ $(document).ready(function() {
     }
 
     // Access to bulmaCarousel instance of an element
-    let element = document.querySelector('#my-element');
+    var element = document.querySelector('#my-element');
     if (element && element.bulmaCarousel) {
     	// bulmaCarousel instance is available as element.bulmaCarousel
     	element.bulmaCarousel.on('before-show', function(state) {
@@ -74,29 +58,21 @@ $(document).ready(function() {
     	});
     }
 
-    /*
-    let player = document.getElementById('interpolation-video');
+    /*var player = document.getElementById('interpolation-video');
     player.addEventListener('loadedmetadata', function() {
       $('#interpolation-slider').on('input', function(event) {
         console.log(this.value, player.duration);
         player.currentTime = player.duration / 100 * this.value;
       })
-    }, false);
-    */
-
+    }, false);*/
     preloadInterpolationImages();
 
-    $('#interpolation-slider-chair').on('input', function(event) {
-      setInterpolationImageChair(this.value);
+    $('#interpolation-slider').on('input', function(event) {
+      setInterpolationImage(this.value);
     });
-    setInterpolationImageChair(0);
-    $('#interpolation-slider-car').on('input', function(event) {
-      setInterpolationImageCar(this.value);
-    });
-    setInterpolationImageCar(0);
-
-    $('#interpolation-slider-chair').prop('max', NUM_INTERP_FRAMES - 1);
-    $('#interpolation-slider-car').prop('max', NUM_INTERP_FRAMES - 1);
+    setInterpolationImage(0);
+    $('#interpolation-slider').prop('max', NUM_INTERP_FRAMES - 1);
 
     bulmaSlider.attach();
+
 })
